@@ -166,8 +166,8 @@ public class Calculator extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-    private List<String> numericKeys = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
-    private List<String> commandKeys = Arrays.asList("+", "-", "*", "/", "C", ".");
+    private final List<String> numericKeys = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    private final List<String> commandKeys = Arrays.asList("+", "-", "*", "/", "C", ".");
 
     private String storedValue1 = null;
     private String storedValue2 = null;
