@@ -1,19 +1,11 @@
 package org.example;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 public class Calculator extends JFrame implements ActionListener {
-    JFrame frame;
-    JPanel panel;
     JTextField output;
 
     JButton b0;
@@ -34,17 +26,17 @@ public class Calculator extends JFrame implements ActionListener {
     JButton bDigit;
     JButton bEquals;
 
-    static Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 30);
-    static Dimension DEFAULT_BUTTON_SIZE = new Dimension(100, 100);
+    private static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 30);
+    private static final Dimension DEFAULT_BUTTON_SIZE = new Dimension(100, 100);
 
     // default constructor
     Calculator() {
         // create frame
-        frame = new JFrame("Calculator");
+        JFrame frame = new JFrame("Calculator");
         frame.setFont(DEFAULT_FONT);
 
         // create panel
-        panel = new JPanel();
+        JPanel panel = new JPanel();
         panel.setFont(DEFAULT_FONT);
 
         // create a textfield
