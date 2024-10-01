@@ -26,7 +26,7 @@ public class CalculatorTest {
             double operand2,
             double expectedResult
     ) {
-        assertEquals(calculator.output.getText(), expectedResult);
+        assertEquals(String.valueOf(expectedResult), calculator.output.getText());
     }
 
 //    @Test
