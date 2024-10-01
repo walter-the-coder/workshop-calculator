@@ -1,9 +1,14 @@
 package org.example;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public class Calculator extends JFrame implements ActionListener {
     JTextField output;
@@ -161,8 +166,48 @@ public class Calculator extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    private List<String> numericKeys = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    private List<String> commandKeys = Arrays.asList("+", "-", "*", "/", "C", ".");
+
+    private String storedValue1 = null;
+    private String storedValue2 = null;
+    private String commandKey = null;
+
     public void actionPerformed(ActionEvent e) {
         String inputKey = e.getActionCommand();
+        System.out.println(inputKey);
+
+        if (numericKeys.contains(inputKey)) {
+            pressNumericValue(inputKey);
+        } else if (commandKeys.contains(inputKey)) {
+            pressCommandKey(inputKey);
+        } else {
+            pressEquals();
+        }
+    }
+
+    private void pressNumericValue(String inputKey) {
+        if (storedValue1 == null) {
+            storedValue1 = String.valueOf(Integer.parseInt(inputKey));
+        } else {
+            storedValue2 = String.valueOf(Integer.parseInt(inputKey));
+        }
         output.setText(inputKey);
+    }
+
+    private void pressCommandKey(String inputKey) {
+        commandKey = inputKey;
+        output.setText(inputKey);
+    }
+
+    private void pressEquals() {
+        Integer result;
+        if (Objects.equals(commandKey, "+")) {
+            result = Integer.parseInt(storedValue1) + Integer.parseInt(storedValue2);
+        } else {
+            throw new NotImplementedException();
+        }
+
+        output.setText(String.valueOf(result));
     }
 }
